@@ -1,12 +1,5 @@
 # High-Performance Computing & Scaling Large Models
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![PyTorch 2.3+](https://img.shields.io/badge/PyTorch-2.3+-ee4c2c.svg)](https://pytorch.org/)
-[![CUDA 12.1+](https://img.shields.io/badge/CUDA-12.1+-76b900.svg)](https://developer.nvidia.com/cuda-toolkit)
-[![CI](https://github.com/HAYDARKILIC/hpc-scaling-llms/actions/workflows/ci.yml/badge.svg)](https://github.com/HAYDARKILIC/hpc-scaling-llms/actions)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
 A graduate-level course on **High-Performance Computing (HPC)** and the systems engineering required to **train, fine-tune, and serve Large Language Models (LLMs)** efficiently. The course integrates GPU architecture, CUDA kernel programming, memory-efficient attention, distributed training paradigms, and modern inference systems into a unified, hands-on curriculum.
 
 ---
@@ -35,7 +28,7 @@ Each week pairs a rigorous **lecture** on a core HPC topic with a **practical la
 ## Repository Structure
 
 ```
-hpc-scaling-llms/
+high_performance_computing/
 ├── notebooks/                    # Weekly Jupyter notebooks (theory + practice)
 │   ├── week1_hpc_foundations_profiling.ipynb
 │   ├── week2_pytorch_optimization_cuda.ipynb
@@ -92,8 +85,8 @@ By the end of this course, students will be able to:
 
 ```bash
 # Clone the repository
-git clone https://github.com/HAYDARKILIC/hpc-scaling-llms.git
-cd hpc-scaling-llms
+git clone https://github.com/HAYDARKILIC/high_performance_computing.git
+cd high_performance_computing
 
 # Option A: pip + virtualenv
 python -m venv .venv
@@ -102,11 +95,11 @@ pip install -r requirements.txt
 
 # Option B: conda
 conda env create -f environment.yml
-conda activate hpc-scaling
+conda activate high_performance_computing
 
 # Option C: Docker
 docker compose -f docker/docker-compose.yml up -d
-docker exec -it hpc-scaling bash
+docker exec -it high_performance_computing bash
 ```
 
 ### Launching the Notebooks
@@ -142,30 +135,6 @@ Key references that anchor the course material:
 - Narayanan, D. et al. (2021). *Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM.* SC21.
 - Hu, E. J. et al. (2021). *LoRA: Low-Rank Adaptation of Large Language Models.* arXiv:2106.09685.
 - Dettmers, T. et al. (2023). *QLoRA: Efficient Finetuning of Quantized LLMs.* NeurIPS.
-
-A complete bibliography is available in [`docs/REFERENCES.md`](docs/REFERENCES.md).
-
----
-
-## Contributing
-
-Contributions, bug reports, and pull requests are welcome. Please read [`CONTRIBUTING.md`](CONTRIBUTING.md) and our [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) before submitting.
-
----
-
-## Citation
-
-If you use this course material in academic work, please cite it using the metadata in [`CITATION.cff`](CITATION.cff):
-
-```bibtex
-@misc{kilic2025hpcllm,
-  author       = {Haydar Kılıç},
-  title        = {High-Performance Computing and Scaling Large Models},
-  year         = {2025},
-  publisher    = {GitHub},
-  url          = {https://github.com/HAYDARKILIC/hpc-scaling-llms}
-}
-```
 
 ---
 
