@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hpc-scaling-llms"
+version = "0.1.0"
+description = "High-Performance Computing and Scaling Large Models — course materials"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Haydar Kılıç", email = "haydar.kilic@example.com"}
+]
+keywords = ["hpc", "cuda", "pytorch", "llm", "distributed-training", "quantization"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage      = "https://github.com/HAYDARKILIC/hpc-scaling-llms"
+Repository    = "https://github.com/HAYDARKILIC/hpc-scaling-llms"
+Issues        = "https://github.com/HAYDARKILIC/hpc-scaling-llms/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
+
+# ─── Black ─────────────────────────────────────────────────────────────────
+[tool.black]
+line-length = 100
+target-version = ["py310"]
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+    \.git
+  | \.venv
+  | build
+  | dist
+  | notebooks/.*\.ipynb_checkpoints
+)/
+'''
+
+# ─── isort ─────────────────────────────────────────────────────────────────
+[tool.isort]
+profile = "black"
+line_length = 100
+known_first_party = ["src"]
+
+# ─── Ruff ──────────────────────────────────────────────────────────────────
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["notebooks", "build", "dist"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "N", "C4", "SIM"]
+ignore = ["E501", "N806", "N803"]  # short loose-CAPS allowed in math code
+
+# ─── Pytest ────────────────────────────────────────────────────────────────
+[tool.pytest.ini_options]
+minversion = "7.0"
+addopts = "-ra -q --strict-markers"
+testpaths = ["tests"]
+markers = [
+    "gpu: requires a CUDA device",
+    "multi_gpu: requires >= 2 CUDA devices",
+    "slow: long-running test",
+]
+
+# ─── Coverage ──────────────────────────────────────────────────────────────
+[tool.coverage.run]
+branch = true
+source = ["src"]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "raise NotImplementedError",
+    "if __name__ == .__main__.:",
+]

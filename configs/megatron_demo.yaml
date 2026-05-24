@@ -1,0 +1,48 @@
+# Demonstration configuration for a 3D-parallel Megatron-LM training job.
+# Total GPUs = data_parallel * tensor_parallel * pipeline_parallel.
+# Example below: 8 GPUs with DP=2, TP=2, PP=2.
+
+cluster:
+  num_nodes: 1
+  gpus_per_node: 8
+  total_gpus: 8
+
+parallelism:
+  tensor_model_parallel_size: 2
+  pipeline_model_parallel_size: 2
+  data_parallel_size: 2
+  sequence_parallel: true
+  use_distributed_optimizer: true
+
+model:
+  num_layers: 24
+  hidden_size: 2048
+  num_attention_heads: 16
+  seq_length: 2048
+  max_position_embeddings: 2048
+  ffn_hidden_size: 8192
+  attention_dropout: 0.0
+  hidden_dropout: 0.0
+  init_method_std: 0.02
+
+training:
+  global_batch_size: 128
+  micro_batch_size: 4
+  lr: 1.5e-4
+  min_lr: 1.0e-5
+  weight_decay: 0.1
+  clip_grad: 1.0
+  train_iters: 50000
+  lr_warmup_iters: 1000
+  lr_decay_iters: 50000
+  lr_decay_style: cosine
+  bf16: true
+
+io:
+  data_path: /workspace/data/pretrain_tokens
+  vocab_file: /workspace/data/tokenizer/vocab.json
+  merge_file: /workspace/data/tokenizer/merges.txt
+  save: /workspace/checkpoints/megatron_demo
+  save_interval: 1000
+  log_interval: 10
+  tensorboard_dir: /workspace/runs/megatron_demo

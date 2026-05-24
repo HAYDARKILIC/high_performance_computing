@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  hpc-llm:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    image: hpc-scaling-llms:latest
+    container_name: hpc-llm
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=compute,utility
+      - PYTHONPATH=/workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    volumes:
+      - ..:/workspace
+      - hpc-cache:/root/.cache
+    ports:
+      - "8888:8888"
+    shm_size: "16gb"
+    ipc: host
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    tty: true
+    stdin_open: true
+
+volumes:
+  hpc-cache:

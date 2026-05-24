@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "High-Performance Computing & Scaling Large Models"
+message: "If you use this course material, please cite it as below."
+type: software
+authors:
+  - given-names: Haydar
+    family-names: Kılıç
+    affiliation: "Course Author"
+repository-code: "https://github.com/HAYDARKILIC/hpc-scaling-llms"
+url: "https://github.com/HAYDARKILIC/hpc-scaling-llms"
+abstract: >-
+  A six-week graduate course covering high-performance computing foundations,
+  PyTorch optimization and custom CUDA kernels, FlashAttention and modern
+  serving systems, ZeRO/FSDP distributed training, multi-dimensional
+  parallelism with Megatron-LM, and efficient inference via LoRA/QLoRA and
+  quantization.
+keywords:
+  - high-performance-computing
+  - large-language-models
+  - distributed-training
+  - cuda
+  - pytorch
+  - flashattention
+  - zero
+  - fsdp
+  - megatron-lm
+  - lora
+  - qlora
+  - quantization
+license: MIT
+version: "1.0.0"
+date-released: "2025-01-15"
