@@ -16,8 +16,8 @@ By participating, you agree to abide by our [Code of Conduct](CODE_OF_CONDUCT.md
 ## Development Setup
 
 ```bash
-git clone https://github.com/HAYDARKILIC/hpc-scaling-llms.git
-cd hpc-scaling-llms
+git clone https://github.com/HAYDARKILIC/high_performance_computing.git
+cd high_performance_computing
 python -m venv .venv && source .venv/bin/activate
 pip install -e ".[dev]"
 pre-commit install     # optional, if .pre-commit-config.yaml is present
